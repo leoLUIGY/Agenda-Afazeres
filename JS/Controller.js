@@ -1,4 +1,4 @@
-function createField(){
+function CreateField(){
     var field = '<form>'+
                 '<label>nome</label><br>' +
                 '<input type="text" id="nome-N"><br><br>'+
@@ -6,22 +6,46 @@ function createField(){
                 '<input type="date" id="date-D"><br><br>'+
                 '<label>Horario</label><br>'+
                 '<input type="time" id="time-T"><br><br>'+
-                '<input type="submit"  onclick="addStatistic()" id="meu-Submit" value="Adicionar">'+
+                '<input type="submit"  onclick="AddStatistic()" id="meu-Submit" value="Adicionar">'+
                 '</form>';
 
     document.getElementById("setActivite").innerHTML = field;
 }
 
 
-function addStatistic(){
-    var name = document.getElementById("nome-N").value;
-    var date = document.getElementById("date-D").value;
-    var hour = document.getElementById("time-T").value;
+function AddStatistic(){
+    var name = document.getElementById("nome-N");
+    var date = document.getElementById("date-D");
+    var hour = document.getElementById("time-T");
+
+    var dados = JSON.parse(localStorage.getItem("dadosTarefa"));
+
+    if(dados == null){
+        localStorage.setItem("dadosTarefa", "[]");
+        dados = [];
+    }
+
+    var dadosT = {
+        nomeN :name.value,
+        dataD : date.value,
+        horaH : hour.value
+    }
+
+    dados.push(dadosT);
+
+    localStorage.setItem("dadosTarefa", JSON.stringify(dados));
+
+    //ShowStatistic();
+}
+
+function ShowStatistic(){
+    var jsonTarefa = localStorage.getItem('dadosTarefa');
+    var tarefa = JSON.parse(jsonTarefa);
 
     var state = '<div>'+
-    '<h2>nome: '+name+'</h2>' +
-    '<h2>dia: '+date+'</h2>' + 
-    '<h2>Horario: '+hour+'</h2>'+
+    '<h2>nome: '+tarefa.nomeN+'</h2>' +
+    '<h2>dia: '+tarefa.dataD+'</h2>' + 
+    '<h2>Horario: '+tarefa.horaH+'</h2>'+
     '</div>';
 
     document.getElementById("setActivite").innerHTML = state;
