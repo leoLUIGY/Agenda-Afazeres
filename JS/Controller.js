@@ -18,7 +18,7 @@ function AddStatistic(){
     var date = document.getElementById("date-D");
     var hour = document.getElementById("time-T");
 
-    var dados = JSON.parse(localStorage.getItem("dadosTarefa"));
+    let dados = JSON.parse(localStorage.getItem("dadosTarefa"));
 
     if(dados == null){
         localStorage.setItem("dadosTarefa", "[]");
@@ -34,19 +34,26 @@ function AddStatistic(){
     dados.push(dadosT);
 
     localStorage.setItem("dadosTarefa", JSON.stringify(dados));
-
-    //ShowStatistic();
 }
 
 function ShowStatistic(){
-    var jsonTarefa = localStorage.getItem('dadosTarefa');
-    var tarefa = JSON.parse(jsonTarefa);
-
-    var state = '<div>'+
-    '<h2>nome: '+tarefa.nomeN+'</h2>' +
-    '<h2>dia: '+tarefa.dataD+'</h2>' + 
-    '<h2>Horario: '+tarefa.horaH+'</h2>'+
-    '</div>';
-
-    document.getElementById("setActivite").innerHTML = state;
+    var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'));
+    var states = '';
+    if(tarefa != null){
+        tarefa.forEach(tf => {
+            var state = '<div>'+
+            '<h2>nome: '+tf.nomeN+'</h2>' +
+            '<h2>dia: '+tf.dataD+'</h2>' + 
+            '<h2>Horario: '+tf.horaH+'</h2>'+
+            '<br><br>'+
+            '</div>';
+            
+        states += state;    
+        });
+        document.getElementById("setActivite").innerHTML = states;
+    }
+    else{
+        var state = 'Nenhuma tarefa Cadastrada';
+        document.getElementById("setActivite").innerHTML = state;
+    }
 }

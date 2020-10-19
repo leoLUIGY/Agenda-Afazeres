@@ -2,16 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Status</title>
+        <title id="nome">Status</title>
         <link rel="stylesheet" href="/CSS/css2.css">
         <link rel="stylesheet" href="/CSS/Style.css">
     </head>
-    <body>
-        <div class="fonts">
-            <h2>Status do dia</h2>
-            <h2>Status da semana</h2>
-            <h2>Status do mês</h2>
+    <body >
+        <div class="fonts" onload="ShowStatistic()">
+            <h2>Status Geral</h2>
+            <div id="setActivite">
+            </div>
+
             <h3><a href="Index.html">Inicio</a></h3>
         </div>
+
+    <script src="/JS/Controller.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     </body>
 </html>
