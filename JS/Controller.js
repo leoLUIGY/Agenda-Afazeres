@@ -1,5 +1,4 @@
-var num;
-
+var num = 0;
 function CreateField(){
     var field = '<form>'+
                 '<label>nome</label><br>' +
@@ -21,61 +20,63 @@ function AddStatistic(){
     var hour = document.getElementById("time-T");
     var docum = document.title;
 
-    let dados = JSON.parse(localStorage.getItem("dadosTarefa"));
+    num = localStorage.length;
 
-    if(dados == null){
-        localStorage.setItem("dadosTarefa", "[]");
-        dados = [];
-    }
+    //let dados = JSON.parse(localStorage.getItem("dadosTarefa"));
 
+    //if(dados == null){
+     //   localStorage.setItem('dadosTarefa', "[]");
+     //   dados = [];
+    //
     var dadosT = {
         documD: docum,
         nomeN :name.value,
         dataD : date.value,
-        horaH : hour.value
+        horaH : hour.value,
+        numN: num
     }
 
-    dados.push(dadosT);
+    //dados.push(dadosT);
 
-    localStorage.setItem("dadosTarefa", JSON.stringify(dados));
+    localStorage.setItem('dadosTarefa'+num+'', JSON.stringify(dadosT));
+    
 }
 
 function ShowStatistic(){
-    var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'));
+    var tarefas= Object.keys(localStorage);
     var states = '';
-    
-    if(tarefa != null){
-        num = 0;
-        tarefa.forEach(tf => {
-            var state = '<div>'+
-            '<h1>'+tf.documD+'<h1>'+
-            '<h2>nome: '+tf.nomeN+'</h2>' +
-            '<h2>dia: '+tf.dataD+'</h2>' + 
-            '<h2>Horario: '+tf.horaH+'</h2>'+
-            '<input type="submit" onclick="RemoveAction()"  id="'+num+'" value="Remover tarefa">'+
+
+    if(tarefas != null){
+        for(var j = 0; j < localStorage.length; j++){
+ 
+            var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'+j+''));
+            var state = '<div id="eliminar">'+
+            '<h1>'+tarefa.documD+'<h1>'+
+            '<h2>nome: '+tarefa.nomeN+'</h2>' +
+            '<h2>dia: '+tarefa.dataD+'</h2>' + 
+            '<h2>Horario: '+tarefa.horaH+'</h2>'+
+            '<input type="submit" onclick="RemoveAction()"  id="eliminarTarefa" value="Remover tarefa">'+
             '<br><br>'+
             '</div>';
-
-        num++;
         var localTemp = document.title; 
         if(document.title == "Status"){
             states += state;  
         }
-        else if(localTemp== tf.documD){
+        else if(localTemp== tarefa.documD){
             states += state;    
         }
-        
-    });
+
+    }
         document.getElementById("setActivite").innerHTML = states;
     }
     else{
-        var state = 'Nenhuma tarefa Cadastrada';
-        document.getElementById("setActivite").innerHTML = state;
+       var state = 'Nenhuma tarefa Cadastrada';
+       document.getElementById("setActivite").innerHTML = state;
     }
 }
 
 function RemoveAction(){
     alert("tentando remover");
-  //  var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'));
-  //  localStorage.removeItem(tarefa[num.value]);
+    var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'));
+    localStorage.removeItem('dadosTarefa');
 }
