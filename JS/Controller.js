@@ -48,14 +48,17 @@ function ShowStatistic(){
 
     if(tarefas != null){
         for(var j = 0; j < localStorage.length; j++){
- 
             var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'+j+''));
+            if(tarefa == null){
+                j = j+1;
+                continue;
+            }
             var state = '<div id="eliminar">'+
             '<h1>'+tarefa.documD+'<h1>'+
             '<h2>nome: '+tarefa.nomeN+'</h2>' +
             '<h2>dia: '+tarefa.dataD+'</h2>' + 
             '<h2>Horario: '+tarefa.horaH+'</h2>'+
-            '<input type="submit" onclick="RemoveAction()"  id="eliminarTarefa" value="Remover tarefa">'+
+            '<input type="submit" onclick="RemoveAction(this.id)"  id="dadosTarefa'+j+'" value="Remover tarefa">'+
             '<br><br>'+
             '</div>';
         var localTemp = document.title; 
@@ -75,8 +78,8 @@ function ShowStatistic(){
     }
 }
 
-function RemoveAction(){
-    alert("tentando remover");
-    var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'));
-    localStorage.removeItem('dadosTarefa');
+function RemoveAction(clicked_id){
+    alert(clicked_id);
+    //var tarefa = JSON.parse(localStorage.getItem(idTarefa));
+    localStorage.removeItem(clicked_id);
 }
