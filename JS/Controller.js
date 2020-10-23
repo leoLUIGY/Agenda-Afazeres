@@ -21,13 +21,18 @@ function AddStatistic(){
     var docum = document.title;
 
     num = localStorage.length;
+    /*if(localStorage.length >0){
+        for(var s = 0; s <= localStorage.length; s++){
+            var nomeTarefa = JSON.parse(localStorage.getItem('dadosTarefa'+s+''));
 
-    //let dados = JSON.parse(localStorage.getItem("dadosTarefa"));
+            if(nomeTarefa == null){
+                num = s;
+            }else{
+                num = localStorage.length;
+        }
+    }
+}*/
 
-    //if(dados == null){
-     //   localStorage.setItem('dadosTarefa', "[]");
-     //   dados = [];
-    //
     var dadosT = {
         documD: docum,
         nomeN :name.value,
@@ -36,7 +41,7 @@ function AddStatistic(){
         numN: num
     }
 
-    //dados.push(dadosT);
+
 
     localStorage.setItem('dadosTarefa'+num+'', JSON.stringify(dadosT));
     
@@ -46,11 +51,11 @@ function ShowStatistic(){
     var tarefas= Object.keys(localStorage);
     var states = '';
 
+
     if(tarefas != null){
-        for(var j = 0; j < localStorage.length; j++){
-            var tarefa = JSON.parse(localStorage.getItem('dadosTarefa'+j+''));
+        for(var j = 0; j <= localStorage.length; j++){
+            var tarefa = JSON.parse(localStorage.getItem(localStorage.key(j)));
             if(tarefa == null){
-                j = j+1;
                 continue;
             }
             var state = '<div id="eliminar">'+
@@ -58,7 +63,7 @@ function ShowStatistic(){
             '<h2>nome: '+tarefa.nomeN+'</h2>' +
             '<h2>dia: '+tarefa.dataD+'</h2>' + 
             '<h2>Horario: '+tarefa.horaH+'</h2>'+
-            '<input type="submit" onclick="RemoveAction(this.id)"  id="dadosTarefa'+j+'" value="Remover tarefa">'+
+            '<input type="submit" onclick="RemoveAction(this.id)"  id="'+localStorage.key(j)+'" value="Remover tarefa">'+
             '<br><br>'+
             '</div>';
         var localTemp = document.title; 
