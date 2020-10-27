@@ -1,13 +1,13 @@
 var num = 0;
 function CreateField(){
     var field = '<form>'+
-                '<label>nome</label><br>' +
+                '<h2>nome</h2><br>' +
                 '<input type="text" id="nome-N"><br><br>'+
-                '<label>dia</label><br>' + 
+                '<h2>dia</h2><br>' + 
                 '<input type="date" id="date-D"><br><br>'+
-                '<label>Horario</label><br>'+
+                '<h2>Horario</h2><br>'+
                 '<input type="time" id="time-T"><br><br>'+
-                '<input type="submit"  onclick="AddStatistic()" id="meu-Submit" value="Adicionar">'+
+                '<button class="button" onclick="AddStatistic()" id="meu-Submit" >Adicionar </button>'+
                 '</form>';
 
     document.getElementById("setActivite").innerHTML = field;
@@ -19,16 +19,17 @@ function AddStatistic(){
     var date = document.getElementById("date-D");
     var hour = document.getElementById("time-T");
     var docum = document.title;
+    var tasks;
 
     num = localStorage.length;
-    /*if(localStorage.length >0){
+ /*   if(localStorage.length >0){
         for(var s = 0; s <= localStorage.length; s++){
             var nomeTarefa = JSON.parse(localStorage.getItem('dadosTarefa'+s+''));
-
+            tasks[s] =nomeTarefa;
             if(nomeTarefa == null){
                 num = s;
             }else{
-                num = localStorage.length;
+                
         }
     }
 }*/
@@ -58,12 +59,12 @@ function ShowStatistic(){
             if(tarefa == null){
                 continue;
             }
-            var state = '<div id="eliminar">'+
+            var state = '<div class="tar">'+
             '<h1>'+tarefa.documD+'<h1>'+
             '<h2>nome: '+tarefa.nomeN+'</h2>' +
             '<h2>dia: '+tarefa.dataD+'</h2>' + 
             '<h2>Horario: '+tarefa.horaH+'</h2>'+
-            '<input type="submit" onclick="RemoveAction(this.id)"  id="'+localStorage.key(j)+'" value="Remover tarefa">'+
+            '<button class="button" onclick="RemoveAction(this.id)"  id="'+localStorage.key(j)+'">Remover Tarefa</button>'+
             '<br><br>'+
             '</div>';
         var localTemp = document.title; 
