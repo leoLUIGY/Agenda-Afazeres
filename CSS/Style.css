@@ -21,6 +21,10 @@ button, input{
     border: 2px solid #555555;
 }
 
+.tars{
+    display: flex;
+    justify-content: space-around;
+}
 
 .tar{
     display: inline;

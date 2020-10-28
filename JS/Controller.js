@@ -76,16 +76,16 @@ function ShowStatistic(){
         }
 
     }
-        document.getElementById("setActivite").innerHTML = states;
-    }
-    else{
-       var state = 'Nenhuma tarefa Cadastrada';
-       document.getElementById("setActivite").innerHTML = state;
+        if (states <= 0){
+            var state = 'Nenhuma tarefa Cadastrada';
+            document.getElementById("setActivite").innerHTML = state;
+        } else{   
+            document.getElementById("setActivite").innerHTML = states;
+        }
     }
 }
 
 function RemoveAction(clicked_id){
-    alert(clicked_id);
     //var tarefa = JSON.parse(localStorage.getItem(idTarefa));
     localStorage.removeItem(clicked_id);
 }
