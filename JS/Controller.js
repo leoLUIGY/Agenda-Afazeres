@@ -1,4 +1,7 @@
 var num = 0;
+if(document.title != "Minha Aplicação"){
+    window.onload = ShowStatistic;  
+}
 function CreateField(){
     var field = '<form>'+
                 '<h2>nome</h2><br>' +
@@ -45,7 +48,7 @@ function AddStatistic(){
 
 
     localStorage.setItem('dadosTarefa'+num+'', JSON.stringify(dadosT));
-    
+    window.location.reload();
 }
 
 function ShowStatistic(){
@@ -88,4 +91,5 @@ function ShowStatistic(){
 function RemoveAction(clicked_id){
     //var tarefa = JSON.parse(localStorage.getItem(idTarefa));
     localStorage.removeItem(clicked_id);
+    window.location.reload();
 }
