@@ -2,10 +2,28 @@
 
 .fonts{
     font-family: 'Grandstander', cursive;
+    font-size: 2rem;
    
 }
 h1, h2, h3, label{
    text-align: center;
+}
+
+h2{
+    color: rgb(0, 214, 252);
+    margin-top:0px;
+}
+body{
+
+    background-size: 100%;
+}
+
+a:link{
+    text-decoration: none;
+    color:rgb(19, 18, 18);
+}
+a:hover {
+    color: red;
 }
 
 button, input{
@@ -16,10 +34,21 @@ button, input{
 
 .button{
     font-family: 'Grandstander', cursive;
+    font-size: 1.5rem;
     background-color: white;
     color: black;
-    border: 2px solid #555555;
+    border: 2px solid s#555555;
+    width: 25rem;
+    height: 2.5rem;
+    background-color:rgba(130, 248, 252, 0.2); 
 }
+
+.button:hover { 
+    background-color: rgb(0, 118, 214, 0.4);
+    width: 26rem;
+    height: 2.7rem;
+}
+
 
 .tars{
     display: flex;
