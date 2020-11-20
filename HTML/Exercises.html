@@ -9,9 +9,28 @@
     <body background="/Images/Exercicios.jpg">
         <div class="fonts">
             <h2>Exercicios e Esportes</h2>
+            
             <button class="button" id="esconder" onclick="CreateField()">Adicionar Exercicio</button><br>
-            <div id="setActivite" class="tars">
-            </div>
+            <form id="esconderForm">
+                    <table>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data</th>
+                                <th>Horario</th>
+                            <tr>
+                                   
+                            <tr>
+                                <td><input type="text" id="nome-N"></td>
+                                <td><input type="date" id="date-D"></td>
+                                <td><input type="time" id="time-T"></td>
+                            </tr>          
+                    </table>
+                <button class="button" onclick="AddStatistic()" id="meu-Submit" >Adicionar </button>
+            </form>
+            
+            <table  id="setActivite">
+                         
+            </table >
             <h3><a href="Index.html">Inicio</a></h3>
         </div>
 

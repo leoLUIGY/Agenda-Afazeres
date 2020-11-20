@@ -1,28 +1,22 @@
 var num = 0;
 if(document.title != "Minha Aplicação"){
     window.onload = ShowStatistic;  
+    if(document.title != "Status"){
+        document.getElementById("esconderForm").style.display= 'none';
+    }
 }
 
 
 
 function CreateField(){
     document.getElementById("esconder").style.display= 'none';
-    var field = '<form>'+
-                '<h2>nome</h2>' +
-                '<input type="text" id="nome-N"><br><br>'+
-                '<h2>dia</h2>' + 
-                '<input type="date" id="date-D"><br><br>'+
-                '<h2>Horario</h2>'+
-                '<input type="time" id="time-T"><br>'+
-                '<button class="button" onclick="AddStatistic()" id="meu-Submit" >Adicionar </button>'+
-                '</form>';
-
-    document.getElementById("setActivite").innerHTML = field;
+    document.getElementById("esconderForm").style.display= 'inline';
 }
 
 
 function AddStatistic(){
     document.getElementById("esconder").style.display= 'inline';
+    document.getElementById("esconderForm").style.display= 'none';
     var name = document.getElementById("nome-N");
     var date = document.getElementById("date-D");
     var hour = document.getElementById("time-T");
@@ -30,17 +24,6 @@ function AddStatistic(){
     var tasks;
 
     num = localStorage.length;
- /*   if(localStorage.length >0){
-        for(var s = 0; s <= localStorage.length; s++){
-            var nomeTarefa = JSON.parse(localStorage.getItem('dadosTarefa'+s+''));
-            tasks[s] =nomeTarefa;
-            if(nomeTarefa == null){
-                num = s;
-            }else{
-                
-        }
-    }
-}*/
 
     var dadosT = {
         documD: docum,
@@ -58,7 +41,12 @@ function AddStatistic(){
 
 function ShowStatistic(){
     var tarefas= Object.keys(localStorage);
-    var states = '';
+    var states = '  <tr>'+
+    '<th>Tarefa</th>'+
+    '<th>Nome</th>'+
+    '<th>Data</th>'+
+    '<th>Horario</th>'+
+    '</tr>';
 
 
     if(tarefas != null){
@@ -67,14 +55,15 @@ function ShowStatistic(){
             if(tarefa == null){
                 continue;
             }
-            var state = '<div class="tar" id="showAlways">'+
-            '<h1>'+tarefa.documD+'<h1>'+
-            '<h2>nome: '+tarefa.nomeN+'</h2>' +
-            '<h2>dia: '+tarefa.dataD+'</h2>' + 
-            '<h2>Horario: '+tarefa.horaH+'</h2>'+
-            '<button class="button" onclick="RemoveAction(this.id)"  id="'+localStorage.key(j)+'">Remover Tarefa</button>'+
-            '<br><br>'+
-            '</div>';
+
+            //'<tr class="tars" id="showAlways">'+
+            var state = '<tr>'+
+            '<td> '+ tarefa.documD +' </td>'+
+            '<td> '+ tarefa.nomeN +' </td>' +
+            '<td> '+ tarefa.dataD +' </td>' + 
+            '<td> '+ tarefa.horaH +' </td>'+
+            '<td><button class="button" onclick="RemoveAction(this.id)"  id="'+localStorage.key(j)+'">Remover Tarefa</button></td></tr>';
+          
         var localTemp = document.title; 
         if(document.title == "Status" ){
             states += state;  
@@ -84,8 +73,8 @@ function ShowStatistic(){
         }
 
     }
-        if (states <= 0){
-            var state = 'Nenhuma tarefa Cadastrada';
+        if (states <= 1){
+            var state = '<h3>Nenhuma tarefa Cadastrada</h3>';
             document.getElementById("setActivite").innerHTML = state;
         } else{   
             document.getElementById("setActivite").innerHTML = states;
