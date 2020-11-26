@@ -2,17 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Projetos</title>
+        <title>Exercicios/Esportes</title>
         <link rel="stylesheet" href="/CSS/css2.css">
         <link rel="stylesheet" href="/CSS/Style.css">
     </head>
-    <body background="/Images/projects.png">
+    <body background="/Images/Exercicios.jpg">
         <div class="fonts">
-            <h2 >Projetos</h2>
-            <h3>Projetos atuais</h3>
-            <button class="button" id="esconder" onclick="CreateField()">Adicionar Projeto</button><br>
+            <h2>Exercicios e Esportes</h2>
             
-            <form id="esconderForm">
+            <button class="button" id="esconder" onclick="CreateField()">Adicionar Exercicio</button><br>
+            <form id="esconderForm" method="POST" action="/controller.php">
                     <table>
                             <tr>
                                 <th>Nome</th>
@@ -21,12 +20,13 @@
                             <tr>
                                    
                             <tr>
-                                <td><input type="text" id="nome-N"></td>
-                                <td><input type="date" id="date-D"></td>
-                                <td><input type="time" id="time-T"></td>
+                                <td><input type="text" name="name" id="nome-N"></td>
+                                <td><input type="date" name="date" id="date-D"></td>
+                                <td><input type="time" name="time" id="time-T"></td>
                             </tr>          
                     </table>
-                <button class="button" onclick="AddStatistic()" id="meu-Submit" >Adicionar </button>
+                    <input type="submit" value="Enviar">
+                <!--<button class="button" onclick="AddStatistic()" id="meu-Submit" >Adicionar </button>-->
             </form>
             
             <table  id="setActivite">
