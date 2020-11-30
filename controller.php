@@ -9,9 +9,9 @@ $result = "INSERT INTO tarefa (nome, data, horario) VALUES('$nome', '$data', '$h
 $result_tarefa = mysqli_query($conexao,$result);
 
 if(mysqli_insert_id($conexao)){
-    //header("Location: /HTML/Statistic.html");
+    header("Location: Statistic.php");
 } else {
-    //header("Location: /HTML/Index.html");
+    header("Location: Index.php");
 }
 
 mysqli_close($conexao);

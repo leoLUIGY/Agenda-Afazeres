@@ -3,15 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title>Exercicios/Esportes</title>
-        <link rel="stylesheet" href="/CSS/css2.css">
-        <link rel="stylesheet" href="/CSS/Style.css">
+        <link rel="stylesheet" href="CSS/css2.css">
+        <link rel="stylesheet" href="CSS/Style.css">
     </head>
-    <body background="/Images/Exercicios.jpg">
+    <body background="Images/Exercicios.jpg">
         <div class="fonts">
             <h2>Exercicios e Esportes</h2>
             
             <button class="button" id="esconder" onclick="CreateField()">Adicionar Exercicio</button><br>
-            <form id="esconderForm" method="POST" action="/controller.php">
+            <form id="esconderForm" method="POST" action="controller.php">
                     <table>
                             <tr>
                                 <th>Nome</th>
@@ -32,10 +32,10 @@
             <table  id="setActivite">
                          
             </table >
-            <h3><a href="Index.html">Inicio</a></h3>
+            <h3><a href="Index.php">Inicio</a></h3>
         </div>
 
-        <script src="/JS/Controller.js"></script>
+        <script src="JS/Controller.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         
     </body>

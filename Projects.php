@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Projetos</title>
-        <link rel="stylesheet" href="/CSS/css2.css">
-        <link rel="stylesheet" href="/CSS/Style.css">
+        <link rel="stylesheet" href="CSS/css2.css">
+        <link rel="stylesheet" href="CSS/Style.css">
     </head>
-    <body background="/Images/projects.png">
+    <body background="Images/projects.png">
         <div class="fonts">
             <h2 >Projetos</h2>
             <h3>Projetos atuais</h3>
@@ -30,13 +30,13 @@
                 <!--<button class="button" onclick="AddStatistic()" id="meu-Submit" >Adicionar </button>-->
             </form>
             
-            <table  id="setActivite">
-                         
+            <table  id="setActivite" >
+          
             </table >
-            <h3><a href="Index.html">Inicio</a></h3>
+            <h3><a href="Index.php">Inicio</a></h3>
         </div>
 
-        <script src="/JS/Controller.js"></script>
+       <script src="JS/Controller.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         
     </body>
