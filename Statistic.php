@@ -10,6 +10,18 @@ include("tarefasControl.php");
         <link rel="stylesheet" href="CSS/Style.css">
     </head>
     <body background="Images/inicio.jpg">
+        <?php
+
+        if(isset($_GET['p'])){
+            $pagina = $_GET['p'].".php";
+            if(is_file("$pagina"))
+                include("$pagina");
+            else
+                echo "<script>alert('pagina não foi encontrada');</script>";
+        } else 
+            
+        ?>
+
         <div class="fonts" >
             <h2>Status Geral</h2>
 
@@ -21,12 +33,13 @@ include("tarefasControl.php");
                     <th>Horario</th>
                 </tr>
                 <?php while($dado =$con ->fetch_array()){ ?>
-                <tr action="deletarTarefa.php" method="POST">
+                <tr >
                     <td> <?php echo $dado["nome"]; ?></td>
                     <td> <?php echo $dado["data"]; ?> </td> 
                     <td> <?php echo $dado["horario"]; ?> </td>  
 
-                    <td><button class="button" name="tar" value=<?php echo $dado['codigo']; ?>>Remover Tarefa</button></td>;  
+                    <td><a href="javascript: if(confirm('quer mesmo deletar <?php echo $dado["nome"]; ?>'))
+                    location.href='Statistic.php?p=deletarTarefa&tar=<?php echo $dado['codigo']; ?>';">Remover Tarefa</a></td>  
                 </tr> 
                 <?php } ?>         
             </table >
